@@ -8,9 +8,9 @@ namespace Clientes.Models
 
         public int ClienteId { get; set; }
 
-        [Required (ErrorMessage = "El nombre del sistema es obligatorio")]
+        [Required(ErrorMessage = "El nombre del sistema es obligatorio")]
 
-        public string? Nombres { get; set; }
+        public string Nombres { get; set; } = "";
 
         public int Telefono { get; set; }
 
