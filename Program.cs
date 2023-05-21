@@ -1,13 +1,26 @@
-using Clientes.Data;
+using Clientes.BLL;
+using Clientes.DAL;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
+using Radzen;
 
 var builder = WebApplication.CreateBuilder(args);
+{
+    // Add services to the container.
+    builder.Services.AddRazorPages();
+    builder.Services.AddServerSideBlazor();
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+    var ConStr = builder.Configuration.GetConnectionString("ConStr");
+
+    builder.Services.AddDbContext<ClienteContext>(Options => Options.UseSqlite(ConStr));
+
+    builder.Services.AddScoped<SistemaBLL>();
+    
+    builder.Services.AddScoped<NotificationService>();
+}
+
+
 
 var app = builder.Build();
 
