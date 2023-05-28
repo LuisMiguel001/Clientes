@@ -14,9 +14,9 @@ namespace Clientes.BLL
             _contexto = contexto;
         }
 
-        public bool Existe(string nombres, int rnc)
+        public bool Existe(string nombres)
         {
-            return _contexto.Sistema.Any(s => s.Nombres == nombres || s.Rnc == rnc);
+            return _contexto.Sistema.Any(s => s.Nombres == nombres);
         }
 
         private bool Insertar(Sistema Cliente)
@@ -36,7 +36,7 @@ namespace Clientes.BLL
 
         public bool Guardar(Sistema Cliente)
         {
-            if (!Existe(Cliente.Nombres, Cliente.Rnc))
+            if (!Existe(Cliente.Nombres))
                 return Insertar(Cliente);
             else
                 return Modificar(Cliente);
