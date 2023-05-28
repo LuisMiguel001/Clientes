@@ -8,15 +8,18 @@ namespace Clientes.Models
 
         public int ClienteId { get; set; }
 
-        [Required(ErrorMessage = "El nombre del sistema es obligatorio")]
-
+        [Required(ErrorMessage = "El nombre es un campo obligatorio")]
         public string Nombres { get; set; } = "";
 
-        public int Telefono { get; set; }
+		[StringLength(12)]
+		public string? Telefono { get; set; }
 
-        public int Celular { get; set; }
-       
-        public int Rnc { get; set; }
+        [StringLength(12)]
+        public string? Celular { get; set; }
+
+        [StringLength(13)]
+		[Required(ErrorMessage = "El Rnc es un campo obligatorio")]
+        public string? Rnc { get; set; }
 
         public string? Email { get; set; }
 
