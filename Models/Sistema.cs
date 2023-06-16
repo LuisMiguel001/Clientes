@@ -24,5 +24,6 @@ namespace Clientes.Models
         public string? Email { get; set; }
 
         public string? Direccion { get; set; }
+
     }
 }

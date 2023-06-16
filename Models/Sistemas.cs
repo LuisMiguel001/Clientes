@@ -6,6 +6,7 @@ namespace Clientes.Models
     {
         [Key]
 
+        [Required(ErrorMessage = "El ticketId es un campo obligatorio")]
         public int TicketId { get; set; }
 
         public DateTime Fecha { get; set; }

@@ -63,6 +63,5 @@ namespace Clientes.BLL
                 .AsNoTracking()
                 .ToList();
         }
-
     }
 }
