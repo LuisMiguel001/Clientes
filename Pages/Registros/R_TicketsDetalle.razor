@@ -7,11 +7,23 @@
 	<DataAnnotationsValidator />
 
 	<div class="container">
-		<div class="card show-lg">
+		<div class="card shadow-lg">
 			<div class="card-header">
 				<h3>Registro de Tickets con Detalles</h3>
 			</div>
 			<div class="card-body">
+				@*Id*@
+				<div class="mb-3">
+					<label class="form-label">Id</label>
+					<InputNumber @bind-Value="detalle.Id" class="form-control" />
+					<ValidationMessage For="@(() => detalle.Id)" />
+				</div>
+				@*TicketId*@
+				<div class="mb-3">
+					<label class="form-label">TicketId</label>
+					<InputNumber @bind-Value="detalle.TicktetId" class="form-control"/>
+					<ValidationMessage For="@(() => detalle.TicktetId)"/>
+				</div>
 				@*Emisor*@
 				<div class="mb-3">
 					<label class="forn-label">Emisor</label>
@@ -22,7 +34,7 @@
 				@*Mensaje*@
 				<div class="mb-3">
 					<label class="forn-label">Mensaje</label>
-					<textarea rows="2" cols="130"> Escriba un mensaje</textarea>
+					<textarea rows="2" cols="125">Escriba un mensaje</textarea>
 					<ValidationMessage For="@(() => detalle.Mensaje)"></ValidationMessage>
 				</div>
 

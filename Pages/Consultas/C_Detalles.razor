@@ -1,0 +1,73 @@
+﻿@page "/ConsultaDetalle"
+@inject DetalleBLL DetalleBLL
+
+<EditForm Model="lista">
+	<div class="container">
+		<div class="card show-lg">
+			<div class="card-header">
+				<h4>Consulta Detalle</h4>
+			</div>
+
+			<div class="card-body">
+				<div class="input-group mb-3">
+					<InputText @bind-Value="Mensaje" class="form-control" aria-describedby="buscarButton"/>
+					<button @onclick="Buscar" class="btn btn-outline-primary" type="button" id="buscarButton">
+						<i class="oi oi-magnifying-glass" />
+					</button>
+				</div>
+
+				<table class="table table-responsive table-condensed table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>TicketId</th>
+							<th>Emisos</th>
+							<th>Mensaje</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach(var detalle in lista)
+						{
+							<tr>
+								<td>@detalle.Id</td>
+								<td>@detalle.TicktetId</td>
+								<td>@detalle.Emisor</td>
+								<td>@detalle.Mensaje</td>
+								<td><a class="btn btn-outline-primary" href="ocupacion/detalle.TicketId">Ver</a></td>
+
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+
+			<div class="card-footer">
+				<div class="form-row justify-content-sm-between" aria-orientation="vertical">
+					<div class="mb-3">
+						<label for="CantidaRegistro" class="col-form-label"><strong>Filas</strong>&nbsp;</label>
+						<input id="CantidadRegistro" @bind-value="@conteo" disabled class="from-control" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</EditForm>
+
+
+@code {
+	public string Mensaje { get; set; }
+	public int conteo { get; set; }
+
+	public List<TicketsDetalle> lista { get; set; } = new List<TicketsDetalle> ();
+
+	public void Buscar()
+	{
+		if (string.IsNullOrWhiteSpace(Mensaje))
+			lista = DetalleBLL.GetList(s => true);
+		else
+			lista = DetalleBLL.GetList(s => s.Mensaje.Contains(Mensaje));
+
+			conteo = lista.Count();
+
+	}
+}
