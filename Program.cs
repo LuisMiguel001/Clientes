@@ -15,9 +15,11 @@ var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddDbContext<ClienteContext>(Options => Options.UseSqlite(ConStr));
     builder.Services.AddDbContext<TicketsContext>(Options => Options.UseSqlite(ConStr));
+    builder.Services.AddDbContext<DetalleContext>(Options => Options.UseSqlite(ConStr));
 
     builder.Services.AddScoped<SistemaBLL>();
     builder.Services.AddScoped<TicketsBLL>();
+    builder.Services.AddScoped<DetalleBLL>();
     
     builder.Services.AddScoped<NotificationService>();
 }
