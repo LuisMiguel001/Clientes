@@ -6,40 +6,37 @@
 <EditForm Model="Id" OnInvalidSubmit="Guardar">
 	<DataAnnotationsValidator />
 
-		<div class="container">
-			<div class="card show-lg">
-				<div class="card-header">
-					<h3>Registro de Tickets con Detales</h3>
+	<div class="container">
+		<div class="card show-lg">
+			<div class="card-header">
+				<h3>Registro de Tickets con Detalles</h3>
+			</div>
+			<div class="card-body">
+				@*Emisor*@
+				<div class="mb-3">
+					<label class="forn-label">Emisor</label>
+					<InputText @bind-Value="detalle.Emisor" class="form-control" />
+					<ValidationMessage For="@(() => detalle.Emisor)" />
 				</div>
-				<div class="card-body">
-					@*BuscarId*@
-					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-4">
-						<div class="input-group mb-3">
-							<InputNumber @bind-Value="detalle.Id" class="form-control" aria-describedby="buscarButton" />
-							<button @onclick="Buscar" class="btn btn-outline-primary" type="button" id="buscarButton">
-								<i class="oi oi-magnifying-glass" />
-							</button>
-						</div>
-					</div>
 
-					@*Id*@
-					<div class="mb-3">
-						<label class="forn-label">Id</label>
-						<InputNumber @bind-Value="detalle.Id" class="form-control"/>
-						<ValidationMessage For="@(() => detalle.Id)" />
-					</div>
-
-					<div class="card-footer d-flex justify-content-center">
-						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-primary" @onclick="Nuevo"> <i class="io io-file" /> Nuevo</button>
-							<button type="submit" class="btn btn-success"> <i class="io io-document"/> Guardar</button>
-							<button type="button" class="btn btn-danger" @onclick="Eliminar"> <i class="io io-trash" /> ELiminar</button>
-						</div>
-					</div>
-
+				@*Mensaje*@
+				<div class="mb-3">
+					<label class="forn-label">Mensaje</label>
+					<textarea rows="2" cols="130"> Escriba un mensaje</textarea>
+					<ValidationMessage For="@(() => detalle.Mensaje)"></ValidationMessage>
 				</div>
+
+				<div class="card-footer d-flex justify-content-center">
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-primary" @onclick="Nuevo"> <i class="io io-file" /> Nuevo</button>
+						<button type="submit" class="btn btn-success"> <i class="io io-document" /> Guardar</button>
+						<button type="button" class="btn btn-danger" @onclick="Eliminar"> <i class="io io-trash" /> ELiminar</button>
+					</div>
+				</div>
+
 			</div>
 		</div>
+	</div>
 
 </EditForm>
 
