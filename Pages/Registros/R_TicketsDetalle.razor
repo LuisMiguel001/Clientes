@@ -1,10 +1,10 @@
 ﻿@page "/TicketsDetalle"
-@page "/TicketsDetalle/{TicketsDetalle:int}"
+@page "/TicketsDetalle/{Id:int}"
 @inject DetalleBLL DetalleBLL
 @inject NotificationService notificationService
 
 <EditForm Model="Id" OnInvalidSubmit="Guardar">
-	<DataAnnotationsValidator>
+	<DataAnnotationsValidator />
 
 		<div class="container">
 			<div class="card show-lg">
@@ -29,12 +29,18 @@
 						<ValidationMessage For="@(() => detalle.Id)" />
 					</div>
 
+					<div class="card-footer d-flex justify-content-center">
+						<div class="btn-group" role="group">
+							<button type="button" class="btn btn-primary" @onclick="Nuevo"> <i class="io io-file" /> Nuevo</button>
+							<button type="submit" class="btn btn-success"> <i class="io io-document"/> Guardar</button>
+							<button type="button" class="btn btn-danger" @onclick="Eliminar"> <i class="io io-trash" /> ELiminar</button>
+						</div>
+					</div>
 
 				</div>
 			</div>
 		</div>
 
-	</DataAnnotationsValidator>
 </EditForm>
 
 @code {
