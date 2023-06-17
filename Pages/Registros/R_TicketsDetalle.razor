@@ -1,0 +1,123 @@
+﻿@page "/TicketsDetalle"
+@page "/TicketsDetalle/{TicketsDetalle:int}"
+@inject DetalleBLL DetalleBLL
+@inject NotificationService notificationService
+
+<EditForm Model="Id" OnInvalidSubmit="Guardar">
+	<DataAnnotationsValidator>
+
+		<div class="container">
+			<div class="card show-lg">
+				<div class="card-header">
+					<h3>Registro de Tickets con Detales</h3>
+				</div>
+				<div class="card-body">
+					@*BuscarId*@
+					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-4">
+						<div class="input-group mb-3">
+							<InputNumber @bind-Value="detalle.Id" class="form-control" aria-describedby="buscarButton" />
+							<button @onclick="Buscar" class="btn btn-outline-primary" type="button" id="buscarButton">
+								<i class="oi oi-magnifying-glass" />
+							</button>
+						</div>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+	</DataAnnotationsValidator>
+</EditForm>
+
+@code {
+	[Parameter]
+	public int Id { get; set; }
+	public TicketsDetalle detalle { get; set; } = new TicketsDetalle();
+
+	protected override void OnInitialized()
+	{
+		if (Id > 0)
+		{
+			this.detalle.Id = this.Id;
+			Buscar();
+		}
+	}
+
+	public void Buscar()
+	{
+		var TicketEncontrado = DetalleBLL.Buscar(detalle.Id);
+		if (TicketEncontrado != null)
+		{
+			this.detalle = TicketEncontrado;
+		}
+		else
+		{
+			notificationService.ShowNotification(
+			titulo: "Error de Busqueda",
+			mensaje: "Registro no encontrado",
+			NotificationSeverity.Error);
+		}
+	}
+
+	public void Nuevo()
+	{
+		this.detalle = new TicketsDetalle();
+	}
+
+	public void Guardar()
+	{
+		if (!Validar())
+		{
+			notificationService.ShowNotification(
+				titulo: "Validacion",
+				mensaje: "Error, Rvise los campos",
+				NotificationSeverity.Error);
+			return;
+		}
+
+		var guardo = DetalleBLL.Guardar(this.detalle);
+		if (guardo)
+		{
+			notificationService.ShowNotification(
+				titulo: "Exito",
+				mensaje: "Guardo correctamente",
+				NotificationSeverity.Success);
+			Nuevo();
+		}
+		else
+		{
+			notificationService.ShowNotification(
+				titulo: "Error",
+				mensaje: "Ocurrio un error y no fue posible guardar",
+				NotificationSeverity.Error);
+		}
+	}
+
+	public void Eliminar()
+	{
+		Buscar();
+		if (DetalleBLL.Eliminar(this.detalle))
+		{
+			notificationService.ShowNotification(
+				titulo: "Exito",
+				mensaje: "Eliminado con Exito!",
+				NotificationSeverity.Success);
+			Nuevo();
+		}
+		else
+		{
+			notificationService.ShowNotification(
+				titulo: "Error",
+				mensaje: "Ocurrio un error y no fue posible eliminar",
+				NotificationSeverity.Error);
+		}
+	}
+
+	public bool Validar()
+	{
+		return true;
+	}
+
+}
