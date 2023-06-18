@@ -12,10 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddServerSideBlazor();
 
     var ConStr = builder.Configuration.GetConnectionString("ConStr");
+    var ConStrD = builder.Configuration.GetConnectionString("ConStrD");
 
     builder.Services.AddDbContext<ClienteContext>(Options => Options.UseSqlite(ConStr));
     builder.Services.AddDbContext<TicketsContext>(Options => Options.UseSqlite(ConStr));
-    builder.Services.AddDbContext<DetalleContext>(Options => Options.UseSqlite(ConStr));
+    builder.Services.AddDbContext<DetalleContext>(Options => Options.UseSqlite(ConStrD));
 
     builder.Services.AddScoped<SistemaBLL>();
     builder.Services.AddScoped<TicketsBLL>();

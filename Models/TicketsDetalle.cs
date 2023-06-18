@@ -11,7 +11,7 @@ namespace Clientes.Models
         public int TicktetId { get; set; }
 
         [Required(ErrorMessage = "El campo (Emisor) es obligatorio")]
-        public string Emisor { get; set; }
+        public string? Emisor { get; set; }
 
         [Required(ErrorMessage = "Debe dejar un detalle de mensaje")]
         public string Mensaje { get; set; }
