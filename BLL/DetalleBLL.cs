@@ -14,9 +14,9 @@ namespace Clientes.BLL
 			_context = context;
 		}
 
-		public bool Existe(string Emisor)
+		public bool Existe(int Id)
 		{
-			return _context.Detalle.Any(s => s.Emisor == Emisor);
+			return _context.Detalle.Any(s => s.Id == Id);
 		}
 
 		public bool Insertar(TicketsDetalle detalle)
@@ -35,7 +35,7 @@ namespace Clientes.BLL
 
 		public bool Guardar(TicketsDetalle detalle)
 		{
-			if (!Existe(detalle.Emisor))
+			if (!Existe(detalle.Id))
 				return Insertar(detalle);
 			else
 				return Modificar(detalle);
