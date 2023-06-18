@@ -28,7 +28,6 @@ namespace Clientes.BLL
 
         private bool Modificar(Sistema Cliente)
         {
-
             _contexto.Update(Cliente);
             int cantidad = _contexto.SaveChanges();
             return cantidad > 0;
