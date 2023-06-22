@@ -70,32 +70,50 @@
 					<InputText @bind-Value="cliente.Direccion" class="form-control" />
 					<ValidationMessage For="@(() => cliente.Direccion)" />
 				</div>
+
 				<div class="card-header">
 					<h3>Detalle de sistemas</h3>
 				</div>
 				@*Id*@
 				<div class="mb-3">
-					<span class="oi oi-check"true"></span>Id
+					<span class="oi oi"true"></span>Id
 					<InputNumber @bind-Value="detalle.Id" class="form-control"></InputNumber>
 					<ValidationMessage For="@(() => detalle.Id)" />
 				</div>
+
 				@*ClienteId*@
 				<div class="mb-3">
 					<label class="form-label">ClienteId</label>
 					<InputNumber @bind-Value="detalle.ClienteId" class="form-control"></InputNumber>
 					<ValidationMessage For="@(() => detalle.ClienteId)" />
 				</div>
+
 				@*SistemaId*@
 				<div class="mb-3">
 					<label class="form-label">SistemaId</label>
 					<InputNumber @bind-Value="detalle.SistemaId" class="form-control"></InputNumber>
 					<ValidationMessage For="@(() => detalle.SistemaId)" />
 				</div>
+
 				@*Terminales Permitidas*@
 				<div class="mb-3">
 					<label class="form-label">Terminales Permitidas</label>
 					<InputNumber @bind-Value="detalle.TerminalesPermitidas" class="form-control"></InputNumber>
 					<ValidationMessage For="@(() => detalle.TerminalesPermitidas)" />
+				</div>
+
+				@*Emisor*@
+				<div class="mb-3">
+					<span class="oi oi-person" true"></span> Emisor
+					<InputText @bind-Value="detalle.Emisor" class="form-control" />
+					<ValidationMessage For="@(() => detalle.Emisor)" />
+				</div>
+
+				@*Mensaje*@
+				<div class="mb-3">
+					<span class="oi oi-document" true"></span> Mensaje
+					<InputTextArea @bind-Value="detalle.Mensaje" class="form-control" />
+					<ValidationMessage For="@(() => detalle.Mensaje)"></ValidationMessage>
 				</div>
 			</div>			
 

@@ -77,6 +77,23 @@
                     <InputText @bind-Value="ticket.Descripcion" class="form-control" />
                     <ValidationMessage For="@(() => ticket.Descripcion)" />
                 </div>
+                <div class="card-header">
+                    <h3>Detalle de sistemas</h3>
+                </div>
+
+                @*Emisor*@
+                <div class="mb-3">
+                    <span class="oi oi-person" true"></span> Emisor
+                    <InputText @bind-Value="detalle.Emisor" class="form-control" />
+                    <ValidationMessage For="@(() => detalle.Emisor)" />
+                </div>
+
+                @*Mensaje*@
+                <div class="mb-3">
+                    <span class="oi oi-document" true"></span> Mensaje
+                    <InputTextArea @bind-Value="detalle.Mensaje" class="form-control" />
+                    <ValidationMessage For="@(() => detalle.Mensaje)"></ValidationMessage>
+                </div>
 
             </div>
 
@@ -93,9 +110,10 @@
 </EditForm>
 
 @code {
-	[Parameter]
-	public int TicketId { get; set; }
+    [Parameter]
+    public int TicketId { get; set; }
     public Tickest ticket { get; set; } = new Tickest();
+    public TicketsDetalle detalle { get; set; } = new TicketsDetalle();
 
     protected override void OnInitialized()
     {

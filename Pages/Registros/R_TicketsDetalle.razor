@@ -21,6 +21,7 @@
 						</button>
 					</div>
 				</div>
+
 				@*Id*@
 				<div class="mb-3">
 					<label class="form-label">Id</label>
@@ -37,14 +38,14 @@
 
 				@*Emisor*@
 				<div class="mb-3">
-					<label class="forn-label">Emisor</label>
+					<span class="oi oi-person" true"></span> Emisor
 					<InputText @bind-Value="Detalle.Emisor" class="form-control" />
 					<ValidationMessage For="@(() => Detalle.Emisor)" />
 				</div>
 
 				@*Mensaje*@
 				<div class="mb-3">
-					<label class="forn-label">Mensaje</label>
+					<span class="oi oi-document" true"></span> Mensaje
 					<InputTextArea @bind-Value="Detalle.Mensaje" class="form-control" />
 					<ValidationMessage For="@(() => Detalle.Mensaje)"></ValidationMessage>
 				</div>
