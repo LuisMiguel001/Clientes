@@ -25,5 +25,7 @@ namespace Clientes.Models
 
         public string? Direccion { get; set; }
 
+        public int VecesAsignado { get; set; }
     }
+
 }

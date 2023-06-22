@@ -2,7 +2,7 @@
 
 namespace Clientes.Models
 {
-    public class Sistemas
+    public class Tickest
     {
         [Key]
 

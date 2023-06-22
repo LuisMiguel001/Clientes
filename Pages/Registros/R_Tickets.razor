@@ -95,7 +95,7 @@
 @code {
 	[Parameter]
 	public int TicketId { get; set; }
-    public Sistemas ticket { get; set; } = new Sistemas();
+    public Tickest ticket { get; set; } = new Tickest();
 
     protected override void OnInitialized()
     {
@@ -124,7 +124,7 @@
     }
     public void Nuevo()
     {
-        this.ticket = new Sistemas();
+        this.ticket = new Tickest();
     }
 
     public void Guardar()

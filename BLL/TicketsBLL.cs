@@ -19,21 +19,21 @@ namespace Clientes.BLL
             return _context.Sistemas.Any(S => S.TicketId == TicketId);
         }
 
-        public bool Insertar(Sistemas Ticket)
+        public bool Insertar(Tickest Ticket)
         {
             _context.Sistemas.Add(Ticket);
             int cantidad = _context.SaveChanges();
             return cantidad > 0;
         }
 
-        public bool Modificar(Sistemas Ticket)
+        public bool Modificar(Tickest Ticket)
         {
             _context.Update(Ticket);
             int cantidad = _context.SaveChanges();
             return cantidad > 0;
         }
 
-        public bool Guardar(Sistemas Ticket)
+        public bool Guardar(Tickest Ticket)
         {
             if (!Existe(Ticket.TicketId))
                 return Insertar(Ticket);
@@ -41,20 +41,20 @@ namespace Clientes.BLL
                 return Modificar(Ticket);
         }
 
-        public bool Eliminar(Sistemas Ticket)
+        public bool Eliminar(Tickest Ticket)
         {
             _context.Sistemas.Remove(Ticket);
             int cantidad = _context.SaveChanges();
             return cantidad > 0;
         }
 
-        public Sistemas? Buscar(int SistemaId)
+        public Tickest? Buscar(int SistemaId)
         {
             return _context.Sistemas
                 .AsNoTracking()
                 .FirstOrDefault(s => s.SistemaId == SistemaId);
         }
-        public List<Sistemas> GetList(Expression<Func<Sistemas, bool>> Criterio)
+        public List<Tickest> GetList(Expression<Func<Tickest, bool>> Criterio)
         {
             return _context.Sistemas
                 .Where(Criterio)

@@ -8,6 +8,6 @@ namespace Clientes.DAL
         public TicketsContext(DbContextOptions<TicketsContext> Options)
             : base(Options) { }
 
-        public DbSet<Sistemas> Sistemas { get; set; }
+        public DbSet<Tickest> Sistemas { get; set; }
     }
 }
