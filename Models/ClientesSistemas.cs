@@ -12,6 +12,6 @@ namespace Clientes.Models
 
         public int SistemaId { get; set; }
 
-        public string? TerminalesPermitidas { get; set; }
+        public int TerminalesPermitidas { get; set; }
     }
 }

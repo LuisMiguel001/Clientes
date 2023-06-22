@@ -45,7 +45,7 @@
 				@*Mensaje*@
 				<div class="mb-3">
 					<label class="forn-label">Mensaje</label>
-					<InputText @bind-Value="Detalle.Mensaje" class="form-control" />
+					<InputTextArea @bind-Value="Detalle.Mensaje" class="form-control" />
 					<ValidationMessage For="@(() => Detalle.Mensaje)"></ValidationMessage>
 				</div>
 
