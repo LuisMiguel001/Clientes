@@ -2,7 +2,7 @@
 
 namespace Clientes.Models
 {
-    public class Sistema
+    public class Sistemas
     {
         [Key]
 

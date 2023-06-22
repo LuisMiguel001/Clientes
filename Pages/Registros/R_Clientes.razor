@@ -88,7 +88,7 @@
 @code {
 	[Parameter]
 	public int clienteId { get; set; }
-	public Sistema cliente { get; set; } = new Sistema();
+	public Sistemas cliente { get; set; } = new Sistemas();
 
 	protected override void OnInitialized()
 	{
@@ -117,7 +117,7 @@
 	}
 	public void Nuevo()
 	{
-		this.cliente = new Sistema();
+		this.cliente = new Sistemas();
 	}
 
 	public void Guardar()

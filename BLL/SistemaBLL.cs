@@ -19,21 +19,21 @@ namespace Clientes.BLL
             return _contexto.Sistema.Any(s => s.Nombres == nombres);
         }
 
-        private bool Insertar(Sistema Cliente)
+        private bool Insertar(Sistemas Cliente)
         {
             _contexto.Sistema.Add(Cliente);
             int cantidad = _contexto.SaveChanges();
             return cantidad > 0;
         }
 
-        private bool Modificar(Sistema Cliente)
+        private bool Modificar(Sistemas Cliente)
         {
             _contexto.Update(Cliente);
             int cantidad = _contexto.SaveChanges();
             return cantidad > 0;
         }
 
-        public bool Guardar(Sistema Cliente)
+        public bool Guardar(Sistemas Cliente)
         {
             if (!Existe(Cliente.Nombres))
                 return Insertar(Cliente);
@@ -41,21 +41,21 @@ namespace Clientes.BLL
                 return Modificar(Cliente);
         }
 
-        public bool Eliminar(Sistema Cliente)
+        public bool Eliminar(Sistemas Cliente)
         {
             _contexto.Remove(Cliente);
             int cantidad = _contexto.SaveChanges();
             return cantidad > 0;
         }
 
-        public Sistema? Buscar(int ClienteId)
+        public Sistemas? Buscar(int ClienteId)
         {
             return _contexto.Sistema
                 .AsNoTracking()
                 .FirstOrDefault(s => s.ClienteId == ClienteId);
         }
 
-        public List<Sistema> GetList(Expression<Func<Sistema, bool>> Criterio)
+        public List<Sistemas> GetList(Expression<Func<Sistemas, bool>> Criterio)
         {
             return _contexto.Sistema
                 .Where(Criterio)

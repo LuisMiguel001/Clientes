@@ -9,6 +9,6 @@ namespace Clientes.DAL
         public ClienteContext(DbContextOptions<ClienteContext> Options)
             : base(Options) { }
 
-        public DbSet<Sistema> Sistema { get; set; }
+        public DbSet<Sistemas> Sistema { get; set; }
     }
 }
